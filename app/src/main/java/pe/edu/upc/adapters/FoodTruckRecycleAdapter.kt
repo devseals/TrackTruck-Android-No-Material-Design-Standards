@@ -29,9 +29,7 @@ class FoodTruckRecycleAdapter(val context: Context, val foodtrucks: List<Foodtru
     }
 
     inner class Holder(itemView: View, val itemClick: (Foodtruck)-> Unit ) : RecyclerView.ViewHolder(itemView) {
-        val foodtruckNameLbl = itemView?.findViewById<TextView>(R.id.foodtruckNameLbl)
-        val avgCostLbl = itemView?.findViewById<TextView>(R.id.avgCostLbl)
-        val foodTypeLbl = itemView?.findViewById<TextView>(R.id.foodTypeLbl)
+
         val foodtruckNameTextview = itemView?.findViewById<TextView>(R.id.foodtruckNameTextview)
         val avgCostTextView = itemView?.findViewById<TextView>(R.id.avgCostTextView)
         val foodTypeTextView = itemView?.findViewById<TextView>(R.id.foodTypeTextview)

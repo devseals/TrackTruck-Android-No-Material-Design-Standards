@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/navigation_trucks"
+            android:icon="@drawable/ic_restaurant_black_24dp"
+            android:title="@string/navigation_trucks"/>
+
+    <item
+            android:id="@+id/navigation_administrative"
+            android:icon="@drawable/ic_monetization_on_black_24dp"
+            android:title="@string/navigation_administrative"/>
+
+
+</menu>
