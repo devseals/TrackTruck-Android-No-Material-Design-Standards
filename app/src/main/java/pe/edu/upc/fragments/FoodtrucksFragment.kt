@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.recycler_foodtruck.*
+import kotlinx.android.synthetic.main.fragment_foodtrucks.*
 
 import pe.edu.upc.R
 import pe.edu.upc.adapters.FoodTruckRecycleAdapter
@@ -24,6 +24,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FoodtrucksFragment : Fragment() {
 
+    lateinit var adapter: FoodTruckRecycleAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +32,18 @@ class FoodtrucksFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_foodtrucks, container, false)
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        foodtruckList.apply {
+            foodtruckList.adapter = FoodTruckRecycleAdapter(DataService.foodtrucks)
+            foodtruckList.layoutManager=LinearLayoutManager(view.context)
+            foodtruckList.setHasFixedSize(true)
+        }
+
 
     }
 

@@ -6,11 +6,12 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.FoodTrucksListActivity">
+        tools:context=".activities.MainActivity">
 
-    <include
-            layout="@layout/recycler_foodtruck"
-            android:id="@+id/content"/>
+    <FrameLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
