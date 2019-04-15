@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.card_foodtruck.view.*
 import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.R
+import pe.edu.upc.activities.FoodTruckActivity
 import pe.edu.upc.activities.MainActivity
 import java.util.*
 import kotlin.collections.ArrayList
@@ -57,11 +58,15 @@ class FoodTruckRecycleAdapter(val foodtrucks: ArrayList<Foodtruck> ): RecyclerVi
             contentItem.setOnClickListener{
                 val bundle = Bundle()
                 bundle.apply {
-                    //putString("first_name", item.firstName)
-                    //putString("last_name", item.lastName)
+                    putString("name", foodtruck.name)
+                    putString("food_type", foodtruck.food_type)
+                    putDouble("latitude", foodtruck.latitude)
+                    putDouble("longitude", foodtruck.longitude)
+                    putDouble("avg_price", foodtruck.avg_price)
+                    putInt("foodtruck_id", foodtruck.id)
                 }
 
-                val intent = Intent(it.context, MainActivity::class.java)
+                val intent = Intent(it.context, FoodTruckActivity::class.java)
                 intent.putExtras(bundle)
                 it.context.startActivity(intent)
             }

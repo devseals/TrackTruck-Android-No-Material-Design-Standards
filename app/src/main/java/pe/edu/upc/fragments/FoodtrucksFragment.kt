@@ -21,7 +21,6 @@ import org.json.JSONObject
 import pe.edu.upc.R
 import pe.edu.upc.adapters.FoodTruckRecycleAdapter
 import pe.edu.upc.constants.GET_FOODTRUCKS
-import pe.edu.upc.models.DataService
 import pe.edu.upc.models.Foodtruck
 import java.util.ArrayList
 
