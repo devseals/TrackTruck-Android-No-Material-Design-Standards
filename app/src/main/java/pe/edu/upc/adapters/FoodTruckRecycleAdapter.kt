@@ -14,9 +14,10 @@ import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.R
 import pe.edu.upc.activities.MainActivity
 import java.util.*
+import kotlin.collections.ArrayList
 
 
-class FoodTruckRecycleAdapter(val foodtrucks: List<Foodtruck> ): RecyclerView.Adapter<FoodTruckRecycleAdapter.Holder>() {
+class FoodTruckRecycleAdapter(val foodtrucks: ArrayList<Foodtruck> ): RecyclerView.Adapter<FoodTruckRecycleAdapter.Holder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater.from(parent.context)
@@ -25,7 +26,7 @@ class FoodTruckRecycleAdapter(val foodtrucks: List<Foodtruck> ): RecyclerView.Ad
     }
 
     override fun getItemCount(): Int {
-    return foodtrucks.count()
+    return foodtrucks.size
     }
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
@@ -50,8 +51,8 @@ class FoodTruckRecycleAdapter(val foodtrucks: List<Foodtruck> ): RecyclerView.Ad
 
             //aqui falta cadenar datos del FT
             foodtruckNameTextview?.text = foodtruck.name
-            avgCostTextView?.text = foodtruck.avgCost.toString()
-            foodTypeTextView?.text = foodtruck.foodType
+            avgCostTextView?.text = foodtruck.avg_price.toString()
+            foodTypeTextView?.text = foodtruck.food_type
 
             contentItem.setOnClickListener{
                 val bundle = Bundle()

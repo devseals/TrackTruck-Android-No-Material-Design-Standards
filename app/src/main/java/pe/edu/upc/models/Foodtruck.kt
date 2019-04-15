@@ -1,11 +1,4 @@
 package pe.edu.upc.models
 
-class Foodtruck(val name: String, val foodType: String, val avgCost: Double)
-
-object DataService{
-    val foodtrucks = listOf(
-        Foodtruck("FT1","Carne",10.0),
-        Foodtruck("FT2","Veggie",20.0),
-        Foodtruck("FT3","Makki",30.0)
-    )
-}
+data class Foodtruck
+    (val id: Int, val latitude: Double, val longitude:Double, val name: String, val food_type: String, val owner_id:Int, val avg_price:Double)
