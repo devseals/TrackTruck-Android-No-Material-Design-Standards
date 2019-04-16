@@ -1,7 +1,9 @@
 package pe.edu.upc.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -18,6 +20,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
     private var latitude : Double = 0.0
     private var longitude : Double = 0.0
     private var foodtruckName : String = ""
+    private var foodtruckId : Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
             longitude = getDouble("longitude")
             foodTypeViewText.text=getString("food_type")
             avgCostViewText.text=getDouble("avg_price").toString()
-            getInt("foodtruck_id")
+            foodtruckId= getInt("foodtruck_id")
 
         }
 
@@ -62,5 +65,11 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.isIndoorEnabled =   true
         mMap.isBuildingsEnabled = true
         mMap.uiSettings.isZoomControlsEnabled  = true
+    }
+
+    fun showReviews(view:View){
+        val intentReviews = Intent(this,ReviewsActivity::class.java)
+        intentReviews.putExtra("foodtruckId", foodtruckId)
+        startActivity(intentReviews)
     }
 }

@@ -7,9 +7,13 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
+import pe.edu.upc.activities.ReviewsActivity
+import pe.edu.upc.constants.GET_FOODTRUCK
 import pe.edu.upc.constants.GET_FOODTRUCKS
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
+import pe.edu.upc.models.Review
+import java.lang.reflect.Method
 
 class FoodtrucksService{
 
@@ -61,6 +65,54 @@ class FoodtrucksService{
 
         Volley.newRequestQueue(context).add(getFoodtrucksRequest)
         return getFoodTrucks
+    }
+
+    fun downloadReviews(context: Context, foodtruckId: Int, listener: ReviewsActivity.ReviewsDownloaded) : ArrayList<Review>{
+
+        val getReviews = ArrayList<Review>()
+
+        val getReviewsRequest = object : JsonObjectRequest(Method.GET,
+            GET_FOODTRUCK + foodtruckId.toString(),
+            null, Response.Listener {
+            response ->
+            try {
+                val responseReviews = response.getJSONObject("Foodtrucks").getJSONArray("Reviews")
+
+                for (i in 0 until responseReviews.length()){
+
+                    val review : JSONObject = responseReviews.getJSONObject(i)
+                    val review_id = review.getInt("review_id")
+                    val user_id = review.getJSONObject("users").getInt("user_id")
+                    val name: String = review.getJSONObject("users").getString("name")
+                    val username:String = review.getJSONObject("users").getString("username")
+                    val phone_number:String = review.getJSONObject("users").getString("phone_number")
+                    val foodtruck_id = review.getInt("foodtruck_id")
+                    val content:String = review.getString("content")
+
+                    val newReview = Review(review_id, user_id,name,username,phone_number,foodtruck_id,content)
+                    getReviews.add(newReview)
+                }
+
+            }catch (e:JSONException){
+                Log.d("ERROR", e.localizedMessage)
+            }
+
+            listener.success(true)
+
+        }, Response.ErrorListener {
+            error->
+                Log.d("ERROR","Could not find $error")
+
+        }){
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+        }
+
+        Volley.newRequestQueue(context).add(getReviewsRequest)
+
+        return getReviews
+
     }
 
 }
