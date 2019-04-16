@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                                   android:layout_height="match_parent">
+
+    <include layout="@layout/activity_food_truck" android:layout_width="0dp" android:layout_height="0dp"
+             app:layout_constraintStart_toStartOf="parent"
+             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+             android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/button2"
+             android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+            android:text="Nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodtruckNameViewLbl" android:layout_marginTop="24dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:textColor="@android:color/background_dark"/>
+    <TextView
+            android:text="Costo Promedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avgCostViewLbl" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/foodtruckNameViewLbl"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:textColor="@android:color/background_dark"/>
+    <TextView
+            android:text="Tipo de Comida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodTypeViewLbl" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/avgCostViewLbl" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:textColor="@android:color/background_dark"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodtruckNameViewText" app:layout_constraintStart_toEndOf="@+id/foodtruckNameViewLbl"
+            android:layout_marginStart="8dp" android:textColor="@android:color/holo_green_light"
+            app:layout_constraintTop_toTopOf="@+id/foodtruckNameViewLbl"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/avgCostViewText" app:layout_constraintStart_toEndOf="@+id/avgCostViewLbl"
+            android:layout_marginStart="8dp" android:textColor="@android:color/holo_green_light"
+            app:layout_constraintTop_toTopOf="@+id/avgCostViewLbl"/>
+    <TextView
+            android:text="TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/foodTypeViewText" app:layout_constraintStart_toEndOf="@+id/foodTypeViewLbl"
+            android:layout_marginStart="8dp" android:textColor="@android:color/holo_green_light"
+            app:layout_constraintTop_toTopOf="@+id/foodTypeViewLbl"/>
+    <ImageView
+            android:layout_width="116dp"
+            android:layout_height="119dp" app:srcCompat="@drawable/ft7"
+            android:id="@+id/imageView" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+    <Button
+            android:text="Reviews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/foodTypeViewLbl"/>
+    <Button
+            android:text="Add Review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2" app:layout_constraintStart_toEndOf="@+id/button"
+            android:layout_marginStart="24dp"
+            app:layout_constraintBottom_toBottomOf="@+id/button"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

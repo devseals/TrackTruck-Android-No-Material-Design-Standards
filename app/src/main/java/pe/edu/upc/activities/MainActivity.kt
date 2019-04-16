@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.activity_food_trucks_list.*
+import kotlinx.android.synthetic.main.activity_main.*
 import pe.edu.upc.R
 import pe.edu.upc.fragments.AdministrativeFragment
 import pe.edu.upc.fragments.FoodtrucksFragment
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_food_trucks_list)
+        setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         navigateTo(navigation.menu.findItem(R.id.navigation_trucks))
     }
