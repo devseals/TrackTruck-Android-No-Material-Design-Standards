@@ -3,6 +3,7 @@ package pe.edu.upc.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_reviews.*
 import pe.edu.upc.R
 import pe.edu.upc.adapters.ReviewRecycleAdapter
@@ -22,7 +23,7 @@ class ReviewsActivity : AppCompatActivity() {
 
         foodtruckId= intent.getIntExtra("foodtruckId",0)
 
-        var listener = object : ReviewsDownloaded {
+        val listener = object : ReviewsDownloaded {
             override fun success(success: Boolean) {
                 if (success){
                     setUpRecycler()
@@ -32,6 +33,11 @@ class ReviewsActivity : AppCompatActivity() {
 
         setUpRecycler()
         reviews = foodtruckService.downloadReviews(this,foodtruckId, listener)
+
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
 
     }
 
