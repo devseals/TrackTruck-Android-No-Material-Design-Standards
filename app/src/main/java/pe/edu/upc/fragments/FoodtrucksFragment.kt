@@ -36,7 +36,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class FoodtrucksFragment : Fragment() {
 
-    var trucks = java.util.ArrayList<Foodtruck>()
+    var trucks = ArrayList<Foodtruck>()
     val foodtruckService = FoodtrucksService()
 
     override fun onCreateView(
@@ -51,7 +51,7 @@ class FoodtrucksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var listener = object : TrucksDownloaded{
+        val listener = object : TrucksDownloaded{
             override fun success(success: Boolean) {
                 if (success){
                     setUpRecyler()
@@ -59,7 +59,6 @@ class FoodtrucksFragment : Fragment() {
             }
         }
 
-        setUpRecyler()
         trucks=foodtruckService.downloadFoodtrucks(view.context, listener)
 
     }

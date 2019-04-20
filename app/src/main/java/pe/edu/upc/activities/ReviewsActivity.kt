@@ -31,7 +31,6 @@ class ReviewsActivity : AppCompatActivity() {
             }
         }
 
-        setUpRecycler()
         reviews = foodtruckService.downloadReviews(this,foodtruckId, listener)
 
         fab.setOnClickListener { view ->
