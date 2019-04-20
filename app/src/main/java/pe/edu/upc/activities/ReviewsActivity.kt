@@ -2,7 +2,10 @@ package pe.edu.upc.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_reviews.*
 import pe.edu.upc.R
+import pe.edu.upc.adapters.ReviewRecycleAdapter
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Review
 import pe.edu.upc.services.FoodtrucksService
@@ -22,11 +25,12 @@ class ReviewsActivity : AppCompatActivity() {
         var listener = object : ReviewsDownloaded {
             override fun success(success: Boolean) {
                 if (success){
-                System.out.println(reviews)
+                    setUpRecycler()
                 }
             }
         }
 
+        setUpRecycler()
         reviews = foodtruckService.downloadReviews(this,foodtruckId, listener)
 
     }
@@ -35,6 +39,14 @@ class ReviewsActivity : AppCompatActivity() {
 
         fun success(success: Boolean)
 
+    }
+
+    fun setUpRecycler(){
+        reviewList.apply {
+            reviewList.adapter = ReviewRecycleAdapter(reviews)
+            reviewList.layoutManager = LinearLayoutManager(this.context)
+            reviewList.setHasFixedSize(true)
+        }
     }
 
 }

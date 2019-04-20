@@ -5,7 +5,13 @@
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
 
         android:layout_height="100dp"
-        android:id="@+id/contentFoodtruck">
+        android:id="@+id/contentFoodtruck"
+        app:cardElevation="5dp"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="2.5dp"
+        android:layout_marginStart="5dp"
+        app:layout_goneMarginEnd="2.5dp"
+        >
 
 
     <androidx.constraintlayout.widget.ConstraintLayout

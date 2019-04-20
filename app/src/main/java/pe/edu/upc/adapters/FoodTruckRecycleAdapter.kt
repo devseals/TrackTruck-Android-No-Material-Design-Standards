@@ -39,16 +39,16 @@ class FoodTruckRecycleAdapter(val foodtrucks: ArrayList<Foodtruck> ): RecyclerVi
         val foodtruckNameTextview = itemView.findViewById<TextView>(R.id.foodtruckNameTextview)
         val avgCostTextView = itemView.findViewById<TextView>(R.id.avgCostTextView)
         val foodTypeTextView = itemView.findViewById<TextView>(R.id.foodTypeTextview)
-        //val foodtruckImageview = itemView.findViewById<ImageView>(R.id.foodtruckImageview)
+        val foodtruckImageview = itemView.findViewById<ImageView>(R.id.foodtruckImageview)
 
-        //val random = Random()
-        //val randomInt = random.nextInt(13) + 1
+        val random = Random()
+        val randomInt = random.nextInt(13) + 1
 
         var contentItem: CardView = itemView.contentFoodtruck
 
         fun bindFootruck(foodtruck : Foodtruck){
-            //val resourseId = itemView.context.resources.getIdentifier("ft"+randomInt.toString(),"drawable",itemView.context.packageName)
-            //foodtruckImageview?.setImageResource(resourseId)
+            val resourseId = itemView.context.resources.getIdentifier("ft"+randomInt.toString(),"drawable",itemView.context.packageName)
+            foodtruckImageview?.setImageResource(resourseId)
 
             //aqui falta cadenar datos del FT
             foodtruckNameTextview?.text = foodtruck.name
