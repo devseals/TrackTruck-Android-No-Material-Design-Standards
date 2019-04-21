@@ -61,6 +61,7 @@ class FoodtrucksService{
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
             }
+
         }
 
         Volley.newRequestQueue(context).add(getFoodtrucksRequest)
