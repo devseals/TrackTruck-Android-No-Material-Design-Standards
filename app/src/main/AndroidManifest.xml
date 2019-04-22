@@ -17,6 +17,11 @@
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
         <activity
+                android:name=".activities.AdministrativeTabActivity"
+                android:label="@string/title_activity_administrative_tab"
+                android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
                 android:name=".activities.UserTabActivity"
                 android:label="@string/title_activity_user_tab"
                 android:theme="@style/AppTheme.NoActionBar">

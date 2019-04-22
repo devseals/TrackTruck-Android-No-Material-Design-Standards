@@ -9,4 +9,8 @@
     <string name="title_activity_user_tab">UserTabActivity</string>
     <string name="tab_text_3">LOGIN</string>
     <string name="tab_text_4">REGISTER</string>
+    <string name="tab_text_5">EMPLOYEES</string>
+    <string name="title_activity_administrative_tab">AdministrativeTabActivity</string>
+    <string name="tab_text_1">LOGIN</string>
+    <string name="tab_text_2">REGISTER</string>
 </resources>
