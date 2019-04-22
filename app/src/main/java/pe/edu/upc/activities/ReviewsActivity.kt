@@ -1,5 +1,6 @@
 package pe.edu.upc.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -34,8 +35,8 @@ class ReviewsActivity : AppCompatActivity() {
         reviews = foodtruckService.downloadReviews(this,foodtruckId, listener)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+            val intent = Intent(this, UserTabActivity::class.java)
+            startActivity(intent)
         }
 
     }

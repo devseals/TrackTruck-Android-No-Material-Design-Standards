@@ -67,7 +67,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.uiSettings.isZoomControlsEnabled  = true
     }
 
-    fun showReviews(){
+    fun showReviews(view: View){
         val intentReviews = Intent(this,ReviewsActivity::class.java)
         intentReviews.putExtra("foodtruckId", foodtruckId)
         startActivity(intentReviews)
