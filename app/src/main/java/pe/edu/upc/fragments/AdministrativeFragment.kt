@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import pe.edu.upc.R
+import pe.edu.upc.activities.AdministrativeTabActivity
 import pe.edu.upc.activities.UserTabActivity
 import pe.edu.upc.services.DataService
 
@@ -32,7 +33,7 @@ class AdministrativeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         if(DataService.authToken==""){
-            val intent = Intent(view.context,UserTabActivity::class.java)
+            val intent = Intent(view.context,AdministrativeTabActivity::class.java)
             startActivity(intent)
         }
 

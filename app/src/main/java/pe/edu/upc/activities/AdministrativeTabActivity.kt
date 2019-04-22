@@ -18,9 +18,9 @@ class AdministrativeTabActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_administrative_tab)
         val sectionsPagerAdapter = SectionsPagerAdapter2(this, supportFragmentManager)
-        val viewPager: ViewPager = findViewById(R.id.view_pager)
+        val viewPager: ViewPager = findViewById(R.id.view_pager2)
         viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = findViewById(R.id.tabs)
+        val tabs: TabLayout = findViewById(R.id.tabs2)
         tabs.setupWithViewPager(viewPager)
     }
 }

@@ -7,7 +7,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import pe.edu.upc.R
 import pe.edu.upc.fragments.*
 
-private val TAB_TITLES = arrayOf(
+private val TAB_TITLES2 = arrayOf(
     R.string.tab_text_1,
     R.string.tab_text_2,
     R.string.tab_text_5
@@ -16,27 +16,27 @@ private val TAB_TITLES = arrayOf(
 class SectionsPagerAdapter2(private val context: Context, fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment {
-        var fragment = Fragment()
+
         when(position){
             1->{
-                fragment=OwnerLoginFragment()
+                return OwnerLoginFragment()
             }
             2->{
-                fragment=OwnerRegisterFragment()
+                return  OwnerRegisterFragment()
             }
             3->{
-                fragment=EmployeeLoginFragment()
+                return EmployeeLoginFragment()
             }
         }
-        return fragment
+        return OwnerLoginFragment()
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
+        return context.resources.getString(TAB_TITLES2[position])
     }
 
     override fun getCount(): Int {
-        // Show 2 total pages.
-        return 2
+
+        return 3
     }
 }

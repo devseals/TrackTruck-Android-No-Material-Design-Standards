@@ -13,4 +13,6 @@
     <string name="title_activity_administrative_tab">AdministrativeTabActivity</string>
     <string name="tab_text_1">LOGIN</string>
     <string name="tab_text_2">REGISTER</string>
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contrasena</string>
 </resources>
