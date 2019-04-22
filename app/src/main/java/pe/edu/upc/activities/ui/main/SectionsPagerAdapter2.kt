@@ -18,13 +18,13 @@ class SectionsPagerAdapter2(private val context: Context, fm: FragmentManager) :
     override fun getItem(position: Int): Fragment {
 
         when(position){
-            1->{
+            0->{
                 return OwnerLoginFragment()
             }
-            2->{
+            1->{
                 return  OwnerRegisterFragment()
             }
-            3->{
+            2->{
                 return EmployeeLoginFragment()
             }
         }

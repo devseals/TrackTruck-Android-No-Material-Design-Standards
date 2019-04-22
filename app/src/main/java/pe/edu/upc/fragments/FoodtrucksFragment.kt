@@ -58,7 +58,7 @@ class FoodtrucksFragment : Fragment() {
                 }
             }
         }
-
+        setUpRecyler()
         trucks=foodtruckService.downloadFoodtrucks(view.context, listener)
 
     }
