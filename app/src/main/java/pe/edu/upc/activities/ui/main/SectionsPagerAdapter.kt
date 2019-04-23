@@ -17,10 +17,10 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) : 
 
     override fun getItem(position: Int): Fragment {
         when(position){
-            1->{
+            0->{
                 return UserLoginFragment()
             }
-            2->{
+            1->{
                 return UserRegisterFragment()
             }
         }
