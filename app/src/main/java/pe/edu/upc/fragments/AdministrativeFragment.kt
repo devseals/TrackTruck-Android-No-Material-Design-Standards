@@ -10,8 +10,7 @@ import android.view.ViewGroup
 
 import pe.edu.upc.R
 import pe.edu.upc.activities.AdministrativeTabActivity
-import pe.edu.upc.activities.UserTabActivity
-import pe.edu.upc.services.DataService
+import pe.edu.upc.services.DataServiceO
 
 
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,7 +31,7 @@ class AdministrativeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(DataService.authToken==""){
+        if(DataServiceO.authToken==""){
             val intent = Intent(view.context,AdministrativeTabActivity::class.java)
             startActivity(intent)
         }
