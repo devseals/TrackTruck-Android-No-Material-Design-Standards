@@ -15,7 +15,7 @@ import pe.edu.upc.constants.REGISTER_USER
 
 class AuthenticationService {
 
-    fun registerUser(context: Context, email: String,userName:String, name:String, phoneNumber:String , password:String){
+    fun registerUser(context: Context,userName:String, name:String, phoneNumber:String , password:String){
 
         val jsonBody = JSONObject()
         jsonBody.put("name", name)

@@ -10,6 +10,7 @@ import pe.edu.upc.R
 import pe.edu.upc.adapters.ReviewRecycleAdapter
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Review
+import pe.edu.upc.services.DataServiceU
 import pe.edu.upc.services.FoodtrucksService
 
 class ReviewsActivity : AppCompatActivity() {
@@ -35,8 +36,11 @@ class ReviewsActivity : AppCompatActivity() {
         reviews = foodtruckService.downloadReviews(this,foodtruckId, listener)
 
         fab.setOnClickListener { view ->
-            val intent = Intent(this, UserTabActivity::class.java)
-            startActivity(intent)
+            if(DataServiceU.authToken=="") {
+                
+                val intent = Intent(this, UserTabActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }

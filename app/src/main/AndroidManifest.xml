@@ -16,6 +16,14 @@
             android:supportsRtl="true"
             android:theme="@style/AppTheme"
             android:usesCleartextTraffic="true">
+        <activity android:name=".activities.SalesActivity">
+        </activity>
+        <activity android:name=".activities.CreateFoodtruckActivity">
+        </activity>
+        <activity android:name=".activities.CreateEmployeeActivity">
+        </activity>
+        <activity android:name=".activities.CreateReviewActivity">
+        </activity>
         <activity
                 android:name=".activities.AdministrativeTabActivity"
                 android:label="@string/title_activity_administrative_tab"

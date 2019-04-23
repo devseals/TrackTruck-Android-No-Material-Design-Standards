@@ -30,7 +30,7 @@ class ReviewRecycleAdapter(val reviews : ArrayList<Review>):RecyclerView.Adapter
 
             reviewUser.text = review.name
             reviewContent.text = review.content
-
+            reviewTitle.text = review.title
         }
     }
 

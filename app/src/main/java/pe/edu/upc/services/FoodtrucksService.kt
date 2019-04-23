@@ -89,8 +89,9 @@ class FoodtrucksService{
                     val phone_number:String = review.getJSONObject("users").getString("phone_number")
                     val foodtruck_id = review.getInt("foodtruck_id")
                     val content:String = review.getString("content")
+                    val title: String = review.getString("title")
 
-                    val newReview = Review(review_id, user_id,name,username,phone_number,foodtruck_id,content)
+                    val newReview = Review(review_id, user_id,name,username,phone_number,foodtruck_id,content,title)
                     getReviews.add(newReview)
                 }
 
