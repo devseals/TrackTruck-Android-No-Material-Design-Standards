@@ -15,6 +15,8 @@ import pe.edu.upc.constants.REGISTER_USER
 
 class AuthenticationService {
 
+    var authtoken=""
+
     fun registerUser(context: Context,userName:String, name:String, phoneNumber:String , password:String){
 
         val jsonBody = JSONObject()
@@ -110,6 +112,12 @@ class AuthenticationService {
             override fun getBody(): ByteArray {
                 return requestBody.toByteArray()
             }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String,String>()
+                headers.put("Authorization", "Bearer $authtoken")
+                return headers
+            }
         }
         Volley.newRequestQueue(context).add(createRequest)
     }
@@ -140,6 +148,12 @@ class AuthenticationService {
 
             override fun getBody(): ByteArray {
                 return requestBody.toByteArray()
+            }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String,String>()
+                headers.put("Authorization", "Bearer $authtoken")
+                return headers
             }
         }
         Volley.newRequestQueue(context).add(createRequest)
