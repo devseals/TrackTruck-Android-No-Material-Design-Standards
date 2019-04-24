@@ -93,8 +93,11 @@ class AuthenticationService {
 
         val createRequest = object : JsonObjectRequest(Method.POST, LOG_USER,null, Response.Listener {
                 response ->
-
-
+                authtoken = response.getString("Token")
+                DataServiceU.authToken = response.getString("Token")
+                DataServiceU.id = response.getJSONObject("User").getInt("user_id")
+                DataServiceU.name = response.getJSONObject("User").getString("name")
+                DataServiceU.isLogged = true
             try {
 
             }catch (e : JSONException){
@@ -113,11 +116,6 @@ class AuthenticationService {
                 return requestBody.toByteArray()
             }
 
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String,String>()
-                headers.put("Authorization", "Bearer $authtoken")
-                return headers
-            }
         }
         Volley.newRequestQueue(context).add(createRequest)
     }
@@ -131,7 +129,11 @@ class AuthenticationService {
 
         val createRequest = object : JsonObjectRequest(Method.POST, LOG_OWNER,null, Response.Listener {
                 response ->
-
+                authtoken = response.getString("Token")
+                DataServiceO.isLogged = true
+                DataServiceO.id = response.getJSONObject("Owner").getInt("owner_id")
+                DataServiceO.name = response.getJSONObject("User").getString("name")
+                DataServiceO.authToken = response.getString("Token")
             try {
 
             }catch (e : JSONException){
@@ -150,11 +152,6 @@ class AuthenticationService {
                 return requestBody.toByteArray()
             }
 
-            override fun getHeaders(): MutableMap<String, String> {
-                val headers = HashMap<String,String>()
-                headers.put("Authorization", "Bearer $authtoken")
-                return headers
-            }
         }
         Volley.newRequestQueue(context).add(createRequest)
     }

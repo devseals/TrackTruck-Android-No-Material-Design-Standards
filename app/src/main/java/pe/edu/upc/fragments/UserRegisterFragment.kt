@@ -1,6 +1,7 @@
 package pe.edu.upc.fragments
 
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,6 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.fragment_user_register.*
 
 import pe.edu.upc.R
+import pe.edu.upc.activities.UserTabActivity
 import pe.edu.upc.services.AuthenticationService
 
 // TODO: Rename parameter arguments, choose names that match
@@ -42,8 +44,16 @@ class UserRegisterFragment : Fragment() {
     }
 
     fun registerUser(view: View){
-        userNameTxt.editText?.text
-        //sample.text
+        authService.registerUser(
+            view.context,
+            userNameTxt.editText?.text.toString(),
+            userRegisterUserTxt.editText?.text.toString(),
+            userPhoneTxt.editText?.text.toString(),
+            userRegisterPassTxt.editText?.text.toString())
+
+        val intent = Intent(this.context,UserTabActivity::class.java)
+        intent.putExtra("foodtruckId", activity?.intent?.getIntExtra("foodtruckId",0))
+        startActivity(intent)
     }
 
 }

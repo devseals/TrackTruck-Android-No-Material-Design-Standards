@@ -1,29 +1,29 @@
 package pe.edu.upc.services
 
 object DataServiceU {
-    var id= ""
+    var id= 0
     var name= ""
     var authToken :String =""
     var isLogged : Boolean = false
 
     fun logout(){
-        var id = ""
-        var email =""
-        var authToken :String =""
-        var isLogged : Boolean = false
+         id = 0
+         name =""
+         authToken=""
+         isLogged = false
     }
 }
 
 object DataServiceO {
-    var id= ""
+    var id= 0
     var name= ""
     var authToken :String =""
     var isLogged : Boolean = false
 
     fun logout(){
-        var id = ""
-        var email =""
-        var authToken :String =""
-        var isLogged : Boolean = false
+         id = 0
+         name =""
+         authToken  =""
+         isLogged = false
     }
 }

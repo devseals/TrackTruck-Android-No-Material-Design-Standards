@@ -39,6 +39,11 @@ class ReviewsActivity : AppCompatActivity() {
             if(DataServiceU.authToken=="") {
                 
                 val intent = Intent(this, UserTabActivity::class.java)
+                intent.putExtra("foodtruckId", foodtruckId)
+                startActivity(intent)
+            }else if(DataServiceU.authToken!=""){
+                val intent = Intent(this, CreateReviewActivity::class.java)
+                intent.putExtra("foodtruckId", intent.getIntExtra("foodtruckId",0))
                 startActivity(intent)
             }
         }

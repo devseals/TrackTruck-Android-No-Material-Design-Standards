@@ -10,6 +10,7 @@ import org.json.JSONObject
 import pe.edu.upc.activities.ReviewsActivity
 import pe.edu.upc.constants.GET_FOODTRUCK
 import pe.edu.upc.constants.GET_FOODTRUCKS
+import pe.edu.upc.constants.REGISTER_REVIEW
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.models.Review
@@ -117,4 +118,34 @@ class FoodtrucksService{
 
     }
 
+    fun createReview(context: Context, foodTruckId: Int, content: String, title:String){
+
+        val jsonBody=JSONObject()
+        jsonBody.put("user_id", DataServiceU.id)
+        jsonBody.put("foodtruck_id", foodTruckId)
+        jsonBody.put("content", content)
+        jsonBody.put("title",title)
+        val requestBody=jsonBody.toString()
+
+        val reviewRequest = object: JsonObjectRequest(Method.POST, REGISTER_REVIEW, null,Response.Listener {
+            response ->
+            try {
+
+            }catch (e: JSONException){
+                Log.d("ERROR", e.localizedMessage)
+            }
+        },Response.ErrorListener {
+            error->
+            Log.d("ERROR"," Could not find $error")
+        }){
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            override fun getBody(): ByteArray {
+                return requestBody.toByteArray()
+            }
+        }
+        Volley.newRequestQueue(context).add(reviewRequest)
+    }
 }
