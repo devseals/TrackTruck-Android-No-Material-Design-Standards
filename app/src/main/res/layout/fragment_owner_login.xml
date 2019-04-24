@@ -21,6 +21,7 @@
         <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:maxLines="1"
         />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -41,6 +42,8 @@
                 app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:maxLines="1"
         />
 
     </com.google.android.material.textfield.TextInputLayout>

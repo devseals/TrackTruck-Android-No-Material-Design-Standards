@@ -192,7 +192,6 @@ class AuthenticationService {
         Volley.newRequestQueue(context).add(createRequest)
     }
 
-
     fun logEmployee(context: Context, userName:String, password:String){
 
         val jsonBody = JSONObject()

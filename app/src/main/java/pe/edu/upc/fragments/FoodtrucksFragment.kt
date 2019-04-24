@@ -51,6 +51,8 @@ class FoodtrucksFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         val listener = object : TrucksDownloaded{
             override fun success(success: Boolean) {
                 if (success){
