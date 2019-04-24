@@ -39,7 +39,7 @@ class UserLoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        material_text_button.setOnClickListener {
+        logineEmployeeBtn.setOnClickListener {
                 view->
             loginUser(view)
         }

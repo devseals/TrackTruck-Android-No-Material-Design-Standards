@@ -14,27 +14,28 @@
             android:layout_height="wrap_content" android:id="@+id/salesBtn"
             app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView11"/>
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            android:onClick="viewSales"/>
     <Button
             android:text="Anadir Empleado"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:id="@+id/employeeBtn"
             app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toStartOf="@+id/button6"
-            app:layout_constraintTop_toTopOf="@+id/button6"/>
+            app:layout_constraintEnd_toStartOf="@+id/truckBtn"
+            app:layout_constraintTop_toTopOf="@+id/truckBtn" android:onClick="addEmployee"/>
     <Button
             android:text="Anadir Truck"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:id="@+id/button6" app:layout_constraintStart_toEndOf="@+id/employeeBtn"
+            android:id="@+id/truckBtn" app:layout_constraintStart_toEndOf="@+id/employeeBtn"
             app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView12" android:layout_marginTop="8dp"/>
     <ImageView
             android:src="@drawable/sales"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView11" android:layout_marginTop="100dp"
+            android:id="@+id/imageView11" android:layout_marginTop="68dp"
             app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintHorizontal_bias="0.498"/>
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView12"
             app:layout_constraintStart_toEndOf="@+id/imageView13" app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="48dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="24dp"
             app:layout_constraintTop_toBottomOf="@+id/salesBtn"/>
     <ImageView
             android:src="@drawable/employee"

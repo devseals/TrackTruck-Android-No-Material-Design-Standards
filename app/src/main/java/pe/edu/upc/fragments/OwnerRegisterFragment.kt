@@ -50,6 +50,7 @@ class OwnerRegisterFragment : Fragment() {
             ownerRegisterPassTxt.editText?.text.toString(),
             ownerRucTxt.editText?.text.toString()
         )
-        startActivity(Intent(context,AdministrativeTabActivity::class.java))
+        val intent=Intent(context,AdministrativeTabActivity::class.java)
+        startActivity(intent)
     }
 }

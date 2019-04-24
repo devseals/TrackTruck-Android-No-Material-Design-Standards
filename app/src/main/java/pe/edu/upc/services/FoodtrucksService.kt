@@ -10,6 +10,7 @@ import org.json.JSONObject
 import pe.edu.upc.activities.ReviewsActivity
 import pe.edu.upc.constants.GET_FOODTRUCK
 import pe.edu.upc.constants.GET_FOODTRUCKS
+import pe.edu.upc.constants.REGISTER_FOODTRUCK
 import pe.edu.upc.constants.REGISTER_REVIEW
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
@@ -148,4 +149,45 @@ class FoodtrucksService{
         }
         Volley.newRequestQueue(context).add(reviewRequest)
     }
+
+    fun createTruck(context: Context, name: String, food_type: String, avg_price: Double, latitude: Double, longitude:Double){
+
+        val jsonBody = JSONObject()
+        jsonBody.put("name", name)
+        jsonBody.put("owner_id", DataServiceO.id)
+        jsonBody.put("food_type", food_type)
+        jsonBody.put("latitude", latitude)
+        jsonBody.put("longitude", longitude)
+        jsonBody.put("avg_price", avg_price)
+        val requestBody = jsonBody.toString()
+
+        val createRequest = object : JsonObjectRequest(Method.POST, REGISTER_FOODTRUCK,null ,Response.Listener {
+            response ->
+            try {
+
+            }catch (e:JSONException){
+                Log.d("ERROR", e.localizedMessage)
+            }
+        }, Response.ErrorListener {
+            error->
+            Log.d("ERROR", "Could not find $error")
+        }){
+
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            override fun getBody(): ByteArray {
+                return requestBody.toByteArray()
+            }
+        }
+
+        Volley.newRequestQueue(context).add(createRequest)
+
+    }
+
+    fun downloadSales(context: Context){
+
+    }
+
 }
