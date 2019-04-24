@@ -42,9 +42,9 @@ class ReviewsActivity : AppCompatActivity() {
                 intent.putExtra("foodtruckId", foodtruckId)
                 startActivity(intent)
             }else if(DataServiceU.authToken!=""){
-                val intent = Intent(this, CreateReviewActivity::class.java)
-                intent.putExtra("foodtruckId", intent.getIntExtra("foodtruckId",0))
-                startActivity(intent)
+                val intent2 = Intent(this, CreateReviewActivity::class.java)
+                intent2.putExtra("foodtruckId", foodtruckId)
+                startActivity(intent2)
             }
         }
 
