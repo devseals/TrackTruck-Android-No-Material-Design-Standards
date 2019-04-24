@@ -8,14 +8,15 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONException
 import org.json.JSONObject
 import pe.edu.upc.activities.ReviewsActivity
-import pe.edu.upc.constants.GET_FOODTRUCK
-import pe.edu.upc.constants.GET_FOODTRUCKS
-import pe.edu.upc.constants.REGISTER_FOODTRUCK
-import pe.edu.upc.constants.REGISTER_REVIEW
+import pe.edu.upc.activities.SalesActivity
+import pe.edu.upc.constants.*
 import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.models.Review
+import pe.edu.upc.models.Sale
 import java.lang.reflect.Method
+import java.util.*
+import kotlin.collections.ArrayList
 
 class FoodtrucksService{
 
@@ -35,7 +36,7 @@ class FoodtrucksService{
 
                     for(i in 0 until responseFoodtrucks.length() ){
 
-                        var foodtruck : JSONObject = responseFoodtrucks.getJSONObject(i)
+                        val foodtruck : JSONObject = responseFoodtrucks.getJSONObject(i)
                         val id:Int= foodtruck.getInt("foodtruck_id")
                         val latitude: Double = foodtruck.getDouble("latitude")
                         val longitude:Double = foodtruck.getDouble("longitude")
@@ -186,7 +187,83 @@ class FoodtrucksService{
 
     }
 
-    fun downloadSales(context: Context){
+    fun downloadSales(context: Context, listener: SalesActivity.SalesDownloaded): ArrayList<Sale>{
+
+        val getSales = ArrayList<Sale>()
+
+        val getSalesRequest = object : JsonObjectRequest(Method.GET,
+            GET_OWNER_SALES+DataServiceO.id.toString(),
+            null,
+            Response.Listener {
+                response ->
+                try {
+
+                    val responseSales = response.getJSONArray("SalesRecords")
+
+                    for(i in 0 until responseSales.length()){
+
+                        val employeeName = responseSales.getJSONObject(i).getJSONObject("employees").getString("name")
+                        val date=responseSales.getJSONObject(i).getString("date")
+                        val amount=responseSales.getJSONObject(i).getDouble("value")
+
+                        val newSale= Sale(employeeName,date,amount)
+                        getSales.add(newSale)
+                    }
+
+                }catch (e:JSONException){
+                    Log.d("ERROR", e.localizedMessage)
+                }
+
+                listener.success(true)
+
+            }, Response.ErrorListener {
+                error->
+                Log.d("ERROR", "Could not find $error")
+            }){
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+        }
+
+        Volley.newRequestQueue(context).add(getSalesRequest)
+        return getSales
+    }
+
+    fun createSale(context: Context, value: Double, date: String){
+
+        val jsonBody = JSONObject()
+        jsonBody.put("employee_id", DataServiceE.id)
+        jsonBody.put("value",value)
+        jsonBody.put("date",date)
+        val requestBody = jsonBody.toString()
+
+        val createRequest = object : JsonObjectRequest(Method.POST, REGISTER_SALE, null,
+            Response.Listener {
+                response ->
+                try {
+
+                }catch (e:JSONException){
+                    Log.d("ERROR", e.localizedMessage)
+                }
+            },Response.ErrorListener {
+                error->
+                Log.d("ERROR", "Could not find $error")
+            }){
+            override fun getBodyContentType(): String {
+                return "application/json; charset=utf-8"
+            }
+
+            override fun getBody(): ByteArray {
+                return requestBody.toByteArray()
+            }
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String,String>()
+                headers.put("Authorization", "Bearer "+DataServiceE.authToken)
+                return headers
+            }
+        }
+
+        Volley.newRequestQueue(context).add(createRequest)
 
     }
 

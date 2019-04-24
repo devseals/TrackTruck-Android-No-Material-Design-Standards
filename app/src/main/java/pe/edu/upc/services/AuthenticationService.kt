@@ -201,7 +201,9 @@ class AuthenticationService {
 
         val createRequest = object : JsonObjectRequest(Method.POST, LOG_EMPLOYEE,null, Response.Listener {
                 response ->
-
+                DataServiceE.authToken=response.getString("Token")
+                DataServiceE.id=response.getJSONObject("Employee").getInt("employee_id")
+                DataServiceE.isLogged=true
             try {
 
             }catch (e : JSONException){

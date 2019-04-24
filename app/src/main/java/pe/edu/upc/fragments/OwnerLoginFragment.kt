@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.fragment_owner_login.*
 import pe.edu.upc.R
 import pe.edu.upc.activities.MainActivity
 import pe.edu.upc.services.AuthenticationService
+import pe.edu.upc.services.DataServiceO
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,14 +39,16 @@ class OwnerLoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         logineEmployeeBtn.setOnClickListener {
-            view->logOwner(view)
+            ret->logOwner(view)
         }
 
     }
 
     fun logOwner(view: View){
         authServ.logOwner(view.context, ownerUserTxt?.editText?.text.toString(), ownerPassTxt?.editText?.text.toString())
-        startActivity(Intent(view.context, MainActivity::class.java))
+        if(DataServiceO.isLogged) {
+            startActivity(Intent(view.context, MainActivity::class.java))
+        }
     }
 
 }

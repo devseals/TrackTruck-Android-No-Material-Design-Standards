@@ -27,3 +27,15 @@ object DataServiceO {
          isLogged = false
     }
 }
+
+object DataServiceE {
+    var id= 0
+    var authToken :String =""
+    var isLogged : Boolean = false
+
+    fun logout(){
+        id = 0
+        authToken  =""
+        isLogged = false
+    }
+}

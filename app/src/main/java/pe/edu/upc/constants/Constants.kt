@@ -12,3 +12,5 @@ const val REGISTER_REVIEW = "${BASE_URL}reviews"
 const val REGISTER_EMPLOYEE = "${BASE_URL}employees"
 const val LOG_EMPLOYEE="${BASE_URL}login/employee"
 const val GET_OWNER_SALES="${BASE_URL}salesrecords/owners/"
+const val REGISTER_SALE = "${BASE_URL}salesrecords"
+
