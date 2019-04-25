@@ -18,9 +18,9 @@
 
     <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Fecha"
+            android:hint="Detalle"
             android:layout_width="0dp"
-            android:id="@+id/saleRegistryDate"
+            android:id="@+id/saleRegistryContent"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
@@ -44,7 +44,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/saleRegistryDate">
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/saleRegistryContent">
         <com.google.android.material.textfield.TextInputEditText
                 app:passwordToggleEnabled="true"
                 android:layout_width="match_parent"

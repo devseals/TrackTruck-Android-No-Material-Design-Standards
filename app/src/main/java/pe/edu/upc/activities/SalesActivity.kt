@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_sales.*
 import pe.edu.upc.R
+import pe.edu.upc.adapters.SaleRecycleAdapter
 import pe.edu.upc.models.Sale
 import pe.edu.upc.services.FoodtrucksService
 
@@ -37,7 +38,7 @@ class SalesActivity : AppCompatActivity() {
 
     fun setUpRecycler(){
         salesList.apply {
-            //salesList.adapter=SaleRecycleAdapter(sales)
+            salesList.adapter= SaleRecycleAdapter(sales)
             salesList.layoutManager=LinearLayoutManager(this.context)
             salesList.setHasFixedSize(true)
         }

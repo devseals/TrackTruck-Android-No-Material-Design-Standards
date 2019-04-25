@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.activity_create_sale.*
 import pe.edu.upc.R
-import pe.edu.upc.services.DataServiceE
 import pe.edu.upc.services.FoodtrucksService
 
 class CreateSaleActivity : AppCompatActivity() {
@@ -24,7 +23,7 @@ class CreateSaleActivity : AppCompatActivity() {
 
     fun createSale(view: View){
         ftServ.createSale(view.context, saleRegistryAmount?.editText?.text.toString().toDouble(),
-            saleRegistryDate?.editText?.text.toString())
+            saleRegistryContent?.editText?.text.toString())
         startActivity(Intent(view.context, MainActivity::class.java))
     }
 

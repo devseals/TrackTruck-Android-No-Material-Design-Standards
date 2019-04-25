@@ -27,11 +27,13 @@ class SaleRecycleAdapter(val sales: ArrayList<Sale>): RecyclerView.Adapter<SaleR
         val saleAmountTxt = view.saleAmount
         val saleRegister = view.saleRegister
         val saleDate = view.saleDate
+        val saleContent = view.saleContent
 
         fun bind(sale: Sale){
             saleAmountTxt.text = sale.amount.toString()
             saleRegister.text = sale.employeeName
-            saleRegister.text = sale.date
+            saleDate.text = sale.date
+            saleContent.text =sale.content
         }
     }
 

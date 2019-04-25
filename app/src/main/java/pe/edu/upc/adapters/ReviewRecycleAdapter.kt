@@ -25,12 +25,14 @@ class ReviewRecycleAdapter(val reviews : ArrayList<Review>):RecyclerView.Adapter
         val reviewUser: TextView = view.findViewById(R.id.reviewUser)
         val reviewContent : TextView = view.reviewContent
         val reviewTitle : TextView = view.reviewTitle
+        val reviewDate: TextView = view.reviewDate
 
         fun bind(review: Review){
 
             reviewUser.text = review.name
             reviewContent.text = review.content
             reviewTitle.text = review.title
+            reviewDate.text = review.date
         }
     }
 

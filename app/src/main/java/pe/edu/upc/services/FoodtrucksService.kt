@@ -1,5 +1,6 @@
 package pe.edu.upc.services
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import com.android.volley.Response
@@ -14,7 +15,7 @@ import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.models.Review
 import pe.edu.upc.models.Sale
-import java.lang.reflect.Method
+import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -93,8 +94,10 @@ class FoodtrucksService{
                     val foodtruck_id = review.getInt("foodtruck_id")
                     val content:String = review.getString("content")
                     val title: String = review.getString("title")
+                    val date = review.getString("date")
 
-                    val newReview = Review(review_id, user_id,name,username,phone_number,foodtruck_id,content,title)
+
+                    val newReview = Review(review_id, user_id,name,username,phone_number,foodtruck_id,content,title, date)
                     getReviews.add(newReview)
                 }
 
@@ -120,6 +123,7 @@ class FoodtrucksService{
 
     }
 
+    @SuppressLint("SimpleDateFormat")
     fun createReview(context: Context, foodTruckId: Int, content: String, title:String){
 
         val jsonBody=JSONObject()
@@ -127,6 +131,11 @@ class FoodtrucksService{
         jsonBody.put("foodtruck_id", foodTruckId)
         jsonBody.put("content", content)
         jsonBody.put("title",title)
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        val currentDate = sdf.format(Date())
+        jsonBody.put("date",currentDate)
+
         val requestBody=jsonBody.toString()
 
         val reviewRequest = object: JsonObjectRequest(Method.POST, REGISTER_REVIEW, null,Response.Listener {
@@ -205,8 +214,8 @@ class FoodtrucksService{
                         val employeeName = responseSales.getJSONObject(i).getJSONObject("employees").getString("name")
                         val date=responseSales.getJSONObject(i).getString("date")
                         val amount=responseSales.getJSONObject(i).getDouble("value")
-
-                        val newSale= Sale(employeeName,date,amount)
+                        val content=responseSales.getJSONObject(i).getString("content")
+                        val newSale= Sale(employeeName,content,date,amount)
                         getSales.add(newSale)
                     }
 
@@ -229,12 +238,18 @@ class FoodtrucksService{
         return getSales
     }
 
-    fun createSale(context: Context, value: Double, date: String){
+    @SuppressLint("SimpleDateFormat")
+    fun createSale(context: Context, value: Double, content: String){
 
         val jsonBody = JSONObject()
         jsonBody.put("employee_id", DataServiceE.id)
         jsonBody.put("value",value)
-        jsonBody.put("date",date)
+        jsonBody.put("content",content)
+
+        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+        val currentDate = sdf.format(Date())
+        jsonBody.put("date",currentDate)
+
         val requestBody = jsonBody.toString()
 
         val createRequest = object : JsonObjectRequest(Method.POST, REGISTER_SALE, null,
