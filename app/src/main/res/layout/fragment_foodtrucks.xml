@@ -12,6 +12,8 @@
             android:layout_height="match_parent"
             android:id="@+id/foodtruckList" android:scrollbars="vertical" android:isScrollContainer="true"
             android:nestedScrollingEnabled="true" android:scrollbarAlwaysDrawHorizontalTrack="true"
-            android:scrollbarAlwaysDrawVerticalTrack="true"/>
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:paddingBottom="60dp"
+            android:paddingTop="1dp"/>
 
 </FrameLayout>
