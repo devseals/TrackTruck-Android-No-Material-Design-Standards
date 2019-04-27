@@ -15,7 +15,8 @@ import pe.edu.upc.fragments.FoodtrucksFragment
 import pe.edu.upc.models.Foodtruck
 import pe.edu.upc.models.Review
 import pe.edu.upc.models.Sale
-import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -123,7 +124,6 @@ class FoodtrucksService{
 
     }
 
-
     fun createReview(context: Context, foodTruckId: Int, content: String, title:String){
 
         val jsonBody=JSONObject()
@@ -132,13 +132,10 @@ class FoodtrucksService{
         jsonBody.put("content", content)
         jsonBody.put("title",title)
 
+        val date = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
 
-
-        val sdf = SimpleDateFormat("dd/MM/yyyy")
-        val currentDate = sdf.format(Date())
-        jsonBody.put("date",currentDate)
-
-
+        jsonBody.putOpt("date",date.format(formatter))
 
         val requestBody=jsonBody.toString()
 
@@ -159,6 +156,12 @@ class FoodtrucksService{
 
             override fun getBody(): ByteArray {
                 return requestBody.toByteArray()
+            }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String,String>()
+                headers.put("Authorization", "Bearer "+DataServiceU.authToken)
+                return headers
             }
         }
         Volley.newRequestQueue(context).add(reviewRequest)
@@ -260,9 +263,10 @@ class FoodtrucksService{
         jsonBody.put("value",value)
         jsonBody.put("content",content)
 
-        val sdf = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
-        val currentDate = sdf.format(Date())
-        jsonBody.put("date",currentDate)
+        val date = LocalDateTime.now()
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+
+        jsonBody.putOpt("date",date.format(formatter))
 
         val requestBody = jsonBody.toString()
 

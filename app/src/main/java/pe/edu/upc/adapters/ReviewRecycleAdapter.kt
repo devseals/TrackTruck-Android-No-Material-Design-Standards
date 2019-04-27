@@ -32,7 +32,7 @@ class ReviewRecycleAdapter(val reviews : ArrayList<Review>):RecyclerView.Adapter
             reviewUser.text = review.name
             reviewContent.text = review.content
             reviewTitle.text = review.title
-            reviewDate.text = review.date
+            reviewDate.text = review.date.subSequence(0,10)
         }
     }
 
