@@ -7,6 +7,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_create_employee.*
 import pe.edu.upc.R
 import pe.edu.upc.services.AuthenticationService
+import pe.edu.upc.services.DataServiceO
 
 class CreateEmployeeActivity : AppCompatActivity() {
 
@@ -23,8 +24,15 @@ class CreateEmployeeActivity : AppCompatActivity() {
     }
 
     fun createEmployee(view: View){
-        authServ.registerEmployee(view.context, employeeName?.editText?.text.toString() ,
-            employeeUser?.editText?.text.toString(), employeePass?.editText?.text.toString())
-        startActivity(Intent(this, MainActivity::class.java))
+        if(DataServiceO.isLogged) {
+            authServ.registerEmployee(
+                view.context, employeeName?.editText?.text.toString(),
+                employeeUser?.editText?.text.toString(), employeePass?.editText?.text.toString()
+            )
+            startActivity(Intent(this, MainActivity::class.java))
+        }else{
+            startActivity(Intent(this, AdministrativeTabActivity::class.java))
+        }
+
     }
 }

@@ -123,7 +123,7 @@ class FoodtrucksService{
 
     }
 
-    @SuppressLint("SimpleDateFormat")
+
     fun createReview(context: Context, foodTruckId: Int, content: String, title:String){
 
         val jsonBody=JSONObject()
@@ -132,9 +132,13 @@ class FoodtrucksService{
         jsonBody.put("content", content)
         jsonBody.put("title",title)
 
+
+
         val sdf = SimpleDateFormat("dd/MM/yyyy")
         val currentDate = sdf.format(Date())
         jsonBody.put("date",currentDate)
+
+
 
         val requestBody=jsonBody.toString()
 
@@ -201,7 +205,7 @@ class FoodtrucksService{
         val getSales = ArrayList<Sale>()
 
         val getSalesRequest = object : JsonObjectRequest(Method.GET,
-            GET_OWNER_SALES+DataServiceO.id.toString(),
+            GET_OWNER_SALES,
             null,
             Response.Listener {
                 response ->
@@ -216,7 +220,10 @@ class FoodtrucksService{
                         val amount=responseSales.getJSONObject(i).getDouble("value")
                         val content=responseSales.getJSONObject(i).getString("content")
                         val newSale= Sale(employeeName,content,date,amount)
+                        val id = responseSales.getJSONObject(i).getJSONObject("employees").getJSONObject("owners").getInt("owner_id")
+                        if(id == DataServiceO.id){
                         getSales.add(newSale)
+                        }
                     }
 
                 }catch (e:JSONException){
@@ -232,6 +239,13 @@ class FoodtrucksService{
             override fun getBodyContentType(): String {
                 return "application/json; charset=utf-8"
             }
+
+            override fun getHeaders(): MutableMap<String, String> {
+                val headers = HashMap<String,String>()
+                headers.put("Authorization", "Bearer "+ DataServiceO.authToken)
+                return headers
+            }
+
         }
 
         Volley.newRequestQueue(context).add(getSalesRequest)

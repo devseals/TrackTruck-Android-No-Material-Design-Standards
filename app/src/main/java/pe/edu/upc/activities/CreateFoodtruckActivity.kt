@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import kotlinx.android.synthetic.main.activity_create_foodtruck.*
 import pe.edu.upc.R
+import pe.edu.upc.services.DataServiceO
 import pe.edu.upc.services.FoodtrucksService
 
 class CreateFoodtruckActivity : AppCompatActivity() {
@@ -24,14 +25,21 @@ class CreateFoodtruckActivity : AppCompatActivity() {
     }
 
     fun createFoodtruck(view: View){
-        ftService.createTruck(
-            view.context,
-            truckName.editText?.text.toString(),
-            truckType.editText?.text.toString(),
-            truckPrice.editText?.text.toString().toDouble(),
-            truckLatitude.editText?.text.toString().toDouble(),
-            truckLongitude.editText?.text.toString().toDouble()
+
+        if(DataServiceO.isLogged) {
+            ftService.createTruck(
+                view.context,
+                truckName.editText?.text.toString(),
+                truckType.editText?.text.toString(),
+                truckPrice.editText?.text.toString().toDouble(),
+                truckLatitude.editText?.text.toString().toDouble(),
+                truckLongitude.editText?.text.toString().toDouble()
             )
-        startActivity(Intent(view.context, MainActivity::class.java))
+            startActivity(Intent(view.context, MainActivity::class.java))
+        }else{
+            startActivity(Intent(this, AdministrativeTabActivity::class.java))
+        }
+
+
     }
 }
