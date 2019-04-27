@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_administrative.*
 
 import pe.edu.upc.R
-import pe.edu.upc.activities.AdministrativeTabActivity
-import pe.edu.upc.activities.CreateEmployeeActivity
-import pe.edu.upc.activities.CreateFoodtruckActivity
-import pe.edu.upc.activities.SalesActivity
+import pe.edu.upc.activities.*
+import pe.edu.upc.services.DataServiceE
 import pe.edu.upc.services.DataServiceO
 
 
@@ -33,6 +31,9 @@ class AdministrativeFragment : Fragment() {
 
         if(DataServiceO.authToken=="") {
             val intent = Intent(this.context, AdministrativeTabActivity::class.java)
+            startActivity(intent)
+        }else if(DataServiceE.isLogged){
+            val intent = Intent(this.context, CreateSaleActivity::class.java)
             startActivity(intent)
         }
 
