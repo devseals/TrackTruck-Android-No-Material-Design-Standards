@@ -54,6 +54,7 @@
                 android:name=".activities.FoodTruckActivity"
                 android:label="@string/title_activity_food_truck">
         </activity>
+
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

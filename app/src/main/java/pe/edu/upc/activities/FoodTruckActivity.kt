@@ -25,7 +25,6 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.food_truck_view)
-
         intent?.extras?.apply {
 
             foodtruckName = getString("name")
@@ -42,6 +41,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+        setTitle(foodtruckName)
     }
 
     /**
