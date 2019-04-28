@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:maxLines="1"
-        />
+                android:textColorLink="#00000000"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
