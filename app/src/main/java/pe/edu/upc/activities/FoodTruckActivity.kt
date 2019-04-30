@@ -12,7 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.food_truck_view.*
-import pe.edu.upc.R
+
 
 class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -24,7 +24,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.food_truck_view)
+        setContentView(pe.edu.upc.R.layout.food_truck_view)
         intent?.extras?.apply {
 
             foodtruckName = getString("name")
@@ -39,7 +39,7 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
-            .findFragmentById(R.id.map) as SupportMapFragment
+            .findFragmentById(pe.edu.upc.R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         setTitle(foodtruckName)
     }
@@ -61,6 +61,11 @@ class FoodTruckActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.addMarker(MarkerOptions().position(location).title("Marcador en $foodtruckName"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(location))
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL)
+
+        val zoom = CameraUpdateFactory.zoomTo(15f)
+
+        mMap.animateCamera(zoom)
+
         mMap.isTrafficEnabled =  true
         mMap.isIndoorEnabled =   true
         mMap.isBuildingsEnabled = true
